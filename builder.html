@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<meta name="description" content="Build a workout in your browser from WFH's exercise list and download a private .kworkout file to open in WFH on iPhone.">
+<title>Build a workout – WFH</title>
+<link rel="stylesheet" href="style.css">
+<script src="catalog.js" defer></script>
+<script src="workout-builder.js" defer></script>
+</head>
+<body>
+<main class="builder-shell">
+  <header><img src="icon.png" alt=""><a href="index.html">WFH</a><span class="header-tag">Workout builder</span></header>
+
+  <section class="builder-intro">
+    <div>
+      <h1>Make a workout. <span class="highlight">Send it.</span></h1>
+      <p class="muted">Pick exercises from the WFH list, then share a link: tapping it shows an Open in WFH button that adds the plan to the app. You can also download a <code>.kworkout</code> file. Everything stays in this browser.</p>
+    </div>
+    <label class="secondary-button file-button" for="file-input"><span aria-hidden="true">↑</span> Open .kworkout</label>
+    <input id="file-input" class="visually-hidden" type="file" accept=".kworkout,.json,application/json,application/octet-stream">
+    <p id="import-status" class="import-status" role="status" aria-live="polite"></p>
+  </section>
+
+  <form id="workout-form" novalidate>
+    <section class="details" aria-label="Workout details" id="details-title">
+      <label class="field f-name"><span>Name</span><input id="title" name="title" maxlength="80" required value="Full body strength" placeholder="Saturday strength"></label>
+      <label class="field f-min"><span>Minutes</span><input id="minutes" name="minutes" type="number" min="5" max="180" value="30" inputmode="numeric"></label>
+      <label class="field"><span>Focus</span><select id="focus" name="focus"><option value="fullBody">Full body</option><option value="upper">Upper</option><option value="lower">Lower</option><option value="core">Core</option><option value="cardio">Cardio</option><option value="mobility">Mobility</option></select></label>
+      <label class="field"><span>Intensity</span><select id="intensity" name="intensity"><option value="easy">Easy</option><option value="steady" selected>Steady</option><option value="hard">Hard</option></select></label>
+      <label class="field f-author"><span>Made by</span><input id="author" name="author" maxlength="80" placeholder="Optional"></label>
+      <label class="chip-toggle" title="No jumping or noisy movements"><input id="quiet" name="quiet" type="checkbox"><span>Quiet</span></label>
+    </section>
+
+    <section aria-labelledby="blocks-title">
+      <div class="blocks-bar">
+        <h2 id="blocks-title">Blocks</h2>
+        <span id="totals" class="muted"></span>
+        <button class="text-button" id="toggle-all" type="button">Collapse all</button>
+      </div>
+      <div id="blocks" class="block-list"></div>
+      <button class="secondary-button" id="add-block" type="button"><span aria-hidden="true">＋</span> Add block</button>
+    </section>
+
+    <section class="link-box" aria-label="Share link">
+      <label class="field"><span>Share link <small id="link-note"></small></span>
+        <span class="link-row"><input id="link-field" type="text" readonly spellcheck="false" aria-label="Share link" placeholder="Add an exercise to get a link"><button class="secondary-button" id="copy-link" type="button">Copy</button></span>
+      </label>
+    </section>
+
+    <p id="form-error" class="form-error" role="alert" hidden></p>
+
+    <div class="action-bar">
+      <div class="action-summary" id="preview" aria-live="polite"></div>
+      <button class="share-button" id="share" type="button" title="Share a link that opens the workout in WFH"><span aria-hidden="true">↗</span><span>Share link</span></button>
+      <button class="primary-button" id="download" type="submit"><span>Download</span><span aria-hidden="true">↓</span></button>
+    </div>
+  </form>
+
+  <dialog id="picker" class="picker" aria-labelledby="picker-title">
+    <div class="picker-head">
+      <h2 id="picker-title">Add exercises</h2>
+      <span id="picker-added" class="muted" role="status"></span>
+      <button class="primary-button small" id="picker-done" type="button">Done</button>
+    </div>
+    <div class="picker-filters">
+      <input id="picker-search" type="search" placeholder="Search 850+ exercises" autocomplete="off" aria-label="Search exercises">
+      <select id="picker-pattern" aria-label="Movement"><option value="">All movements</option><option value="squat">Squat</option><option value="hinge">Hinge</option><option value="lunge">Lunge</option><option value="push">Push</option><option value="pull">Pull</option><option value="core">Core</option><option value="cardio">Cardio</option><option value="mobility">Mobility</option></select>
+      <select id="picker-equipment" aria-label="Equipment"></select>
+    </div>
+    <ul id="picker-list" class="picker-list"></ul>
+  </dialog>
+
+  <template id="block-template">
+    <article class="workout-block">
+      <div class="block-head">
+        <button class="icon-button collapse-block" type="button" aria-expanded="true" aria-label="Collapse block">▾</button>
+        <span class="drag-index" aria-hidden="true"></span>
+        <input class="block-title" maxlength="80" required aria-label="Block name">
+        <button class="icon-button remove-block" type="button" aria-label="Remove block">×</button>
+      </div>
+      <div class="block-body">
+        <div class="block-settings">
+        <select class="block-kind" aria-label="Format"><option value="straightSets">Straight sets</option><option value="superset">Superset</option><option value="intervals">Intervals / HIIT</option><option value="emom">EMOM</option><option value="amrap">AMRAP</option><option value="flow">Timed flow</option><option value="stopwatch">Open stopwatch</option></select>
+
+          <label class="mini rounds-field"><span class="rounds-label">Sets</span><input class="block-rounds" type="number" min="1" max="30" value="3" inputmode="numeric"></label>
+          <label class="mini work-field"><span>Work s</span><input class="block-work" type="number" min="0" max="600" value="40" inputmode="numeric"></label>
+          <label class="mini rest-field"><span>Rest s</span><input class="block-rest" type="number" min="0" max="600" value="30" inputmode="numeric"></label>
+          <label class="mini cap-field"><span>Cap min</span><input class="block-cap" type="number" min="1" max="60" value="10" inputmode="numeric"></label>
+        <button class="icon-button move-block-up" type="button" aria-label="Move block up">↑</button>
+        <button class="icon-button move-block-down" type="button" aria-label="Move block down">↓</button>
+        </div>
+        <div class="exercise-list"></div>
+        <button class="add-exercise" type="button"><span aria-hidden="true">＋</span> Add exercises</button>
+      </div>
+      <p class="block-summary muted"></p>
+    </article>
+  </template>
+
+  <template id="exercise-template">
+    <div class="exercise-row">
+      <div class="exercise-main">
+        <span class="exercise-number" aria-hidden="true"></span>
+        <input class="exercise-name" maxlength="80" required placeholder="Exercise name" aria-label="Exercise name">
+        <label class="mini value-field"><span class="prescription-label">Reps</span><input class="exercise-value" type="number" min="1" max="3600" value="10" inputmode="numeric"></label>
+        <label class="mini load-field"><span>Load</span><input class="exercise-load" maxlength="80" placeholder="12 kg"></label>
+        <label class="side-toggle" title="Do each side"><input class="exercise-side" type="checkbox"><span>/ side</span></label>
+        <button class="icon-button more-exercise" type="button" aria-expanded="false" aria-label="More options">⋯</button>
+        <button class="icon-button remove-exercise" type="button" aria-label="Remove exercise">×</button>
+      </div>
+      <p class="exercise-tags muted"></p>
+      <div class="exercise-more" hidden>
+        <div class="custom-fields">
+          <label class="mini"><span>Equipment</span><select class="exercise-equipment"></select></label>
+          <label class="mini"><span>Movement</span><select class="exercise-pattern"><option value="squat">Squat</option><option value="hinge">Hinge</option><option value="lunge">Lunge</option><option value="push">Push</option><option value="pull">Pull</option><option value="core">Core</option><option value="cardio">Cardio</option><option value="mobility">Mobility</option></select></label>
+          <label class="mini"><span>Body area</span><select class="exercise-body"><option value="fullBody">Full body</option><option value="chest">Chest</option><option value="back">Back</option><option value="shoulders">Shoulders</option><option value="arms">Arms</option><option value="core">Core</option><option value="glutes">Glutes</option><option value="legs">Legs</option></select></label>
+        </div>
+        <div class="move-row"><button class="text-button move-up" type="button">↑ Move up</button><button class="text-button move-down" type="button">↓ Move down</button></div>
+      </div>
+    </div>
+  </template>
+
+  <footer><a href="index.html">Home</a><a href="builder.html" aria-current="page">Build a workout</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></footer>
+</main>
+</body>
+</html>
