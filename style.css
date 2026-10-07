@@ -248,3 +248,11 @@ select { appearance: none; padding-right: 28px; background-image: linear-gradien
 .link-row { display: flex; gap: 8px; }
 .link-row input { flex: 1; min-width: 0; color: var(--secondary); font-size: 13px; text-overflow: ellipsis; }
 .link-row .secondary-button { margin: 0; min-width: 96px; }
+
+/* Homepage banner linking to the workout builder */
+.builder-banner { display: flex; gap: 16px; align-items: center; justify-content: space-between; margin: 20px 0 8px; padding: 22px 24px; border: 2px solid var(--accent); border-radius: 20px; background: var(--surface); color: var(--text); text-decoration: none; }
+.builder-banner:hover, .builder-banner:focus-visible { background: var(--raised); }
+.builder-banner strong { display: block; font: 800 34px/1.05 "Barlow Condensed", "Arial Narrow", sans-serif; letter-spacing: .02em; text-transform: uppercase; }
+.builder-banner .banner-text span { display: block; margin-top: 6px; color: var(--secondary); font-size: 16px; line-height: 1.4; }
+.builder-banner .banner-arrow { flex: 0 0 52px; display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; background: var(--accent); color: var(--ink); font-size: 28px; font-weight: 800; }
+@media (max-width: 480px) { .builder-banner { padding: 18px; } .builder-banner strong { font-size: 28px; } .builder-banner .banner-arrow { flex-basis: 44px; width: 44px; height: 44px; } }
