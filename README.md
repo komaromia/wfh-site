@@ -1,11 +1,11 @@
-# KWorkout website
+# WFH website
 
-This directory is the source of the public KWorkout website. It is deployed from a **separate public repo**, `komaromia/kworkout-site` (same setup as `kjournal-site` and `kdocu-site`), so this app repo can stay private.
+This directory is the source of the public WFH website. It is deployed from a **separate public repo**, `komaromia/wfh-site` (same setup as `kjournal-site` and `kdocu-site`), so this app repo can stay private.
 
-- Home: https://komaromia.github.io/kworkout-site/
-- Privacy policy: https://komaromia.github.io/kworkout-site/privacy.html
-- Support: https://komaromia.github.io/kworkout-site/support.html
-- Terms: https://komaromia.github.io/kworkout-site/terms.html
+- Home: https://komaromia.github.io/wfh-site/
+- Privacy policy: https://komaromia.github.io/wfh-site/privacy.html
+- Support: https://komaromia.github.io/wfh-site/support.html
+- Terms: https://komaromia.github.io/wfh-site/terms.html
 
 The app uses these through `AppLinks`. App Store Connect needs the Privacy Policy and Support URLs.
 
