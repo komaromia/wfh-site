@@ -1,4 +1,4 @@
-/* KWorkout site. Tokens from docs/DESIGN.md §3–4: Ember on Ink, Chalk text, ink on every bright fill. */
+/* WFH site. Tokens from docs/DESIGN.md §3–4: Ember on Ink, Chalk text, ink on every bright fill. */
 @font-face { font-family: "Barlow"; font-weight: 400; src: url("fonts/Barlow-Regular.ttf"); font-display: swap; }
 @font-face { font-family: "Barlow"; font-weight: 500; src: url("fonts/Barlow-Medium.ttf"); font-display: swap; }
 @font-face { font-family: "Barlow"; font-weight: 600; src: url("fonts/Barlow-SemiBold.ttf"); font-display: swap; }
@@ -17,7 +17,6 @@
   --link: #ff5a1f;
   --rest: #4cc9f0;
   --ready: #d4ff3f;
-  --danger: #ff3b5c;
   --ink: #0b0c0e;
 }
 
@@ -32,7 +31,6 @@
     --accent: #ff5a1f;
     --link: #c2410c;
     --rest: #0e7490;
-    --danger: #c91f43;
   }
 }
 
@@ -63,6 +61,17 @@ li { margin: 4px 0; }
 .cta { display: inline-block; margin: 8px 0; padding: 14px 24px; border-radius: 16px; background: var(--accent); color: var(--ink); font: 800 22px/1 "Barlow Condensed", "Arial Narrow", sans-serif; letter-spacing: .04em; text-transform: uppercase; text-decoration: none; }
 footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--border); color: var(--secondary); font-size: 14px; }
 footer a { margin-right: 16px; color: var(--secondary); }
+
+@media (max-width: 480px) {
+  main { padding-top: 28px; }
+  h1 { font-size: 38px; }
+}
+
+.language-switcher { display: flex; flex-wrap: wrap; gap: 8px 14px; margin-top: 44px; padding: 16px 0; border-top: 1px solid var(--border); font-size: 14px; }
+.language-switcher a { color: var(--secondary); text-decoration: none; }
+.language-switcher a:hover, .language-switcher a:focus-visible { color: var(--link); text-decoration: underline; }
+.language-switcher a[aria-current="true"] { color: var(--text); font-weight: 600; }
+.language-switcher + footer { margin-top: 0; }
 
 /* Workout builder: dense, mobile-first. One line per exercise so a whole training fits on screen. */
 .builder-shell { max-width: 860px; padding: 20px 14px 0; font-size: 15px; line-height: 1.4; }
