@@ -19,7 +19,8 @@
   const muscleName = { chest: "chest", back: "back", shoulders: "shoulders", biceps: "biceps", triceps: "triceps", quads: "quads", hamstrings: "hamstrings", glutes: "glutes", calves: "calves", core: "core", fullBody: "full body" };
   const formatForKind = { straightSets: "strength", superset: "strength", intervals: "hiit", emom: "emom", amrap: "amrap", flow: "auto", stopwatch: "auto" };
   const kindName = { straightSets: "sets", superset: "superset", intervals: "intervals", emom: "EMOM", amrap: "AMRAP", flow: "flow", stopwatch: "stopwatch" };
-  const clamp = (value, low, high) => Math.min(high, Math.max(low, Number(value) || low));
+  // Whole numbers only: the app decodes reps, seconds and rounds as integers and rejects a file with 10.5.
+  const clamp = (value, low, high) => Math.min(high, Math.max(low, Math.round(Number(value)) || low));
   const text = (value, fallback = "", max = 80) => String(value || fallback).trim().slice(0, max);
   const slug = (value) => text(value, "exercise").toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 48) || "exercise";
   const uid = () => globalThis.crypto && crypto.randomUUID ? crypto.randomUUID().slice(0, 8) : Math.random().toString(36).slice(2, 10);
