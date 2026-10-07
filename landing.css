@@ -29,7 +29,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 76px; }
 
 /* Hero */
 .hero { display: grid; grid-template-columns: 1.05fr .95fr; gap: 40px; align-items: center; max-width: 1120px; margin: 0 auto; padding-top: clamp(32px, 6vw, 72px); padding-bottom: 56px; }
-.hero h1 { margin: 0 0 16px; font-size: clamp(52px, 8.4vw, 104px); line-height: .96; }
+.hero h1 { margin: 0 0 16px; font-size: clamp(40px, 5.2vw, 68px); line-height: 1; }
 .hero .lead { max-width: 540px; margin: 0 0 24px; color: var(--secondary); font-size: clamp(18px, 2.2vw, 21px); }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
 .hero-actions.center { justify-content: center; }
@@ -167,7 +167,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 76px; }
 }
 @media (max-width: 480px) {
   .landing .l-main > section { padding-inline: 16px; }
-  .hero h1 { font-size: 44px; }
+  .hero h1 { font-size: 40px; }
   .landing .cta { padding: 16px 20px; font-size: 21px; }
   .landing h2 { font-size: 34px; }
   .cards { grid-template-columns: 1fr; }
