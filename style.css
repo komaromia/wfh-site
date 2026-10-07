@@ -66,3 +66,9 @@ footer a { margin-right: 16px; color: var(--secondary); }
   main { padding-top: 28px; }
   h1 { font-size: 38px; }
 }
+
+.language-switcher { display: flex; flex-wrap: wrap; gap: 8px 14px; margin-top: 44px; padding: 16px 0; border-top: 1px solid var(--border); font-size: 14px; }
+.language-switcher a { color: var(--secondary); text-decoration: none; }
+.language-switcher a:hover, .language-switcher a:focus-visible { color: var(--link); text-decoration: underline; }
+.language-switcher a[aria-current="true"] { color: var(--text); font-weight: 600; }
+.language-switcher + footer { margin-top: 0; }
