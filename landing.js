@@ -1,6 +1,11 @@
 (function () {
   "use strict";
   const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // Strings for the page's language (inline WFH_I18N, see tools/site/build_landing.py); English fallbacks.
+  const T = Object.assign({ warmup: "Warm-up", strength: "Strength", cooldown: "Cool-down", timed: "timed", setsRest: "3 sets · 60 s rest", reps: "{n} reps", perSide: "{n} / side", seconds: "{n} s", minutes: "{n} min", quickTitle: "Quick session",
+    captions: ["Today's workout, one tap away", "Preview every block before you start", "Count sets and reps hands-free", "Big, bold interval timers"] }, globalThis.WFH_I18N || {});
+  const fmt = (template, n) => template.replace("{n}", n);
+  const nameOf = (item) => (globalThis.WFH_NAMES && globalThis.WFH_NAMES[item.id]) || item.name;
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
 
@@ -68,7 +73,7 @@
     const slides = $$(".slide", carousel);
     const dots = $$(".carousel-dots button");
     const caption = $(".carousel-caption");
-    const captions = ["Today's workout, one tap away", "Preview every block before you start", "Count sets and reps hands-free", "Big, bold interval timers"];
+    const captions = T.captions;
     let index = 0;
     let timer = 0;
     function show(next) {
@@ -188,20 +193,20 @@
     const spec = (item, mode) => {
       if (mode === "timed") return "40 s";
       const reps = 8 + Math.floor(random() * 5);
-      return item.unilateral ? `${reps} / side` : `${reps} reps`;
+      return fmt(item.unilateral ? T.perSide : T.reps, reps);
     };
 
     function render() {
       const { warm, main, cool } = generate();
       const groups = [];
       const total = (list) => list.length;
-      if (total(warm)) groups.push({ title: "Warm-up", meta: "timed", tone: "rest", kind: "flow", rounds: 1, rest: 0, items: warm.map((item) => ({ item, text: "40 s", seconds: 40 })) });
+      if (total(warm)) groups.push({ title: T.warmup, id: "warmup", meta: T.timed, tone: "rest", kind: "flow", rounds: 1, rest: 0, items: warm.map((item) => ({ item, text: fmt(T.seconds, 40), seconds: 40 })) });
       for (let i = 0; i < main.length; i += 4) {
         const part = main.slice(i, i + 4);
-        groups.push({ title: main.length > 4 ? `Strength ${String.fromCharCode(65 + i / 4)}` : "Strength", meta: "3 sets · 60 s rest", tone: "work", kind: "straightSets", rounds: 3, rest: 60,
+        groups.push({ title: main.length > 4 ? `${T.strength} ${String.fromCharCode(65 + i / 4)}` : T.strength, meta: T.setsRest, tone: "work", kind: "straightSets", rounds: 3, rest: 60,
           items: part.map((item) => { const text = spec(item, "reps"); return { item, text, reps: parseInt(text, 10) }; }) });
       }
-      if (total(cool)) groups.push({ title: "Cool-down", meta: "timed", tone: "rest", kind: "flow", rounds: 1, rest: 0, items: cool.map((item) => ({ item, text: "40 s", seconds: 40 })) });
+      if (total(cool)) groups.push({ title: T.cooldown, id: "cooldown", meta: T.timed, tone: "rest", kind: "flow", rounds: 1, rest: 0, items: cool.map((item) => ({ item, text: fmt(T.seconds, 40), seconds: 40 })) });
       result.replaceChildren();
       let delay = 0;
       groups.forEach((group) => {
@@ -217,7 +222,7 @@
           const li = document.createElement("li");
           li.style.setProperty("--d", `${(delay += 0.05).toFixed(2)}s`);
           const name = document.createElement("span");
-          name.textContent = item.name;
+          name.textContent = nameOf(item);
           const detail = document.createElement("span");
           detail.textContent = text;
           li.append(name, detail);
@@ -227,9 +232,9 @@
         result.append(block);
       });
       lastFile = {
-        schemaVersion: 1, app: "KWorkout", title: "Quick session", minutes, focus: "fullBody", format: "auto", intensity: "steady", quiet: false,
+        schemaVersion: 1, app: "KWorkout", title: T.quickTitle, minutes, focus: "fullBody", format: "auto", intensity: "steady", quiet: false,
         blocks: groups.map((group) => ({
-          kind: group.kind, title: group.title, rounds: group.rounds, workSeconds: 0, restSeconds: group.rest, capSeconds: 0, tone: group.tone === "rest" ? (group.title === "Warm-up" ? "warmup" : "cooldown") : "work",
+          kind: group.kind, title: group.title, rounds: group.rounds, workSeconds: 0, restSeconds: group.rest, capSeconds: 0, tone: group.tone === "rest" ? (group.id === "warmup" ? "warmup" : "cooldown") : "work",
           exercises: group.items.map(({ item, reps, seconds }) => {
             const entry = { id: item.id, name: item.name, equipment: item.needs, muscles: item.muscles, pattern: item.pattern, perSide: item.unilateral };
             if (seconds) entry.seconds = seconds; else entry.reps = reps;
@@ -243,7 +248,8 @@
     builderLink.addEventListener("click", async (event) => {
       if (!lastFile || !globalThis.WFHWorkoutBuilder) return;
       event.preventDefault();
-      try { location.href = `builder.html#${await WFHWorkoutBuilder.encodeLink(lastFile)}`; } catch (reason) { location.href = "builder.html"; }
+      const builder = builderLink.getAttribute("href");
+      try { location.href = `${builder}#${await WFHWorkoutBuilder.encodeLink(lastFile)}`; } catch (reason) { location.href = builder; }
     });
     $$("#demo-kit .chip").forEach((chip) => chip.addEventListener("click", () => {
       const key = chip.dataset.kit;
@@ -254,10 +260,11 @@
     const slider = $("#demo-minutes");
     slider.addEventListener("input", () => {
       minutes = Number(slider.value);
-      $("#demo-minutes-out").textContent = `${minutes} min`;
+      $("#demo-minutes-out").textContent = fmt(T.minutes, minutes);
       render();
     });
     $("#demo-shuffle").addEventListener("click", () => { seed0 = (seed0 * 31 + 17) % 100000; render(); });
+    $("#demo-minutes-out").textContent = fmt(T.minutes, minutes);
     render();
   }
 }());

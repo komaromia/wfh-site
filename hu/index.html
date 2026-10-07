@@ -7,6 +7,9 @@
 <meta name="description" content="Az eszközeid. A te időd. Egy koppintás, és kész a friss edzés. A WFH időzítőkkel és hangutasításokkal vezet végig minden sorozaton és pihenőn. Privát és reklámmentes.">
 <title>Otthoni Edzés - WFH – Edzésterv, HIIT és Időzítő</title>
 <link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../landing.css">
+<script>document.documentElement.classList.add("js")</script>
+<link rel="preload" as="image" href="../img/1-train.webp" type="image/webp">
 <link rel="alternate" hreflang="en" href="https://komaromia.github.io/wfh-site/">
 <link rel="alternate" hreflang="de" href="https://komaromia.github.io/wfh-site/de/">
 <link rel="alternate" hreflang="es" href="https://komaromia.github.io/wfh-site/es/">
@@ -15,24 +18,205 @@
 <link rel="alternate" hreflang="pl" href="https://komaromia.github.io/wfh-site/pl/">
 <link rel="alternate" hreflang="pt-BR" href="https://komaromia.github.io/wfh-site/pt-br/">
 <link rel="alternate" hreflang="x-default" href="https://komaromia.github.io/wfh-site/">
+<script>window.WFH_I18N = {"warmup": "Bemelegítés", "strength": "Erő", "cooldown": "Levezetés", "timed": "időre", "setsRest": "3 szett · 60 mp pihenő", "reps": "{n} ism.", "perSide": "{n} / oldal", "seconds": "{n} mp", "minutes": "{n} perc", "quickTitle": "Gyors edzés", "captions": ["A mai edzés egy érintésre", "Nézd át az összes blokkot indulás előtt", "Szettek és ismétlések számolása kéz nélkül", "Nagy, jól látható intervallum-időzítők"]};</script>
+<script src="../catalog.js" defer></script>
+<script src="../i18n/names.hu.js" defer></script>
+<script src="../workout-builder.js" defer></script>
+<script src="../landing.js" defer></script>
 </head>
-<body>
-<main>
-  <header><img src="../icon.png?v=57421328" alt=""><a href="index.html">WFH</a></header>
-  <h1>Otthoni Edzés - WFH</h1>
-  <p class="lead">Edzésterv, HIIT és Időzítő</p>
-  <p>Az eszközeid. A te időd. Egy koppintás, és kész a friss edzés. A WFH időzítőkkel és hangutasításokkal vezet végig minden sorozaton és pihenőn. Privát és reklámmentes.</p>
-  <a class="cta" href="https://apps.apple.com/app/id6819424317">Letöltés az App Store-ból</a>
-  <div class="card"><strong>Alapjaiban privát.</strong> Az edzések az iPhone-odon készülnek. Nincs fiók, reklám vagy követés. Az adataid az eszközödön maradnak.</div>
-  <ul>
-    <li>Add meg egyszer a felszerelésedet: súlyzókat, szalagokat, rudakat, a rendelkezésre álló helyet és a korlátaidat</li>
-    <li>Válassz időtartamot, célt és fókuszt, majd generálj edzést, cserélj le vagy sorsolj újra bármely gyakorlatot</li>
-    <li>Használd a kéz nélküli lejátszót sorozatokhoz, intervallumokhoz, EMOM, Tabata és AMRAP edzésekhez, hangutasításokkal és rezgésekkel</li>
-    <li>Értékeld és jelöld kedvencnek az edzéseket, ismételd meg ugyanazt, vagy kérj hasonlót</li>
-    <li>Oszd meg az edzést .kworkout fájlként, és nyisd meg egy másik iPhone-on</li>
-  </ul>
+<body class="landing">
+<div class="scroll-bar" aria-hidden="true"></div>
+
+<header class="l-nav">
+  <a class="l-brand" href="index.html"><img src="../icon.png?v=57421328" alt="" width="36" height="36"><span>WFH</span></a>
+  <nav aria-label="Fő menü">
+    <a href="#try">Próbáld ki</a>
+    <a href="#player">Lejátszó</a>
+    <a href="#progress">Fejlődés</a>
+    <a href="#share">Megosztás</a>
+    <a href="#privacy">Adatvédelem</a>
+  </nav>
+  <a class="l-nav-cta" href="https://apps.apple.com/app/id6819424317">Az app letöltése</a>
+</header>
+
+<main class="l-main">
+
+  <section class="hero" id="top">
+    <div class="hero-copy">
+      <p class="eyebrow reveal">Edzés otthonról</p>
+      <h1 class="reveal" style="--d:.05s">A felszerelés, ami van.<br>Az idő, ami van.<br><span class="highlight">Indulj.</span></h1>
+      <p class="lead reveal" style="--d:.12s">A WFH a felszerelésedből és a rendelkezésre álló percekből friss otthoni edzést készít, majd nagy időzítőkkel, ismétlésszámlálókkal és hangutasításokkal végigvezet rajta.</p>
+      <div class="hero-actions reveal" style="--d:.2s">
+        <a class="cta" href="https://apps.apple.com/app/id6819424317">Letöltés az App Store-ból</a>
+        <a class="ghost-cta" href="../builder.html">Edzés készítése <span aria-hidden="true">→</span></a>
+      </div>
+      <ul class="hero-points reveal" style="--d:.28s">
+        <li>Fiók nélkül</li><li>Reklám nélkül</li><li>Offline is működik</li>
+      </ul>
+    </div>
+
+    <div class="hero-stage reveal" style="--d:.1s">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="phone tilt" data-carousel>
+        <div class="phone-screen">
+          <img class="slide on" src="../img/1-train.webp" alt="A WFH kezdőképernyője: a mai edzés, indulásra készen" width="560" height="1217">
+          <img class="slide" src="../img/5-preview.webp" alt="Edzés-előnézet blokkokkal és gyakorlatokkal" width="560" height="1217" loading="lazy">
+          <img class="slide" src="../img/4-player.webp" alt="A lejátszó számolja a szetteket és az ismétléseket" width="560" height="1217" loading="lazy">
+          <img class="slide" src="../img/2-interval.webp" alt="Intervallum-időzítő" width="560" height="1217" loading="lazy">
+        </div>
+      </div>
+      <div class="carousel-dots" role="tablist" aria-label="Képernyők">
+        <button role="tab" aria-selected="true" aria-label="Mai edzés"></button>
+        <button role="tab" aria-selected="false" aria-label="Előnézet"></button>
+        <button role="tab" aria-selected="false" aria-label="Lejátszó"></button>
+        <button role="tab" aria-selected="false" aria-label="Intervallumok"></button>
+      </div>
+      <p class="carousel-caption" aria-live="polite">A mai edzés egy érintésre</p>
+    </div>
+  </section>
+
+  <section class="marquee" aria-label="A WFH által támogatott felszerelés">
+    <div class="marquee-track" aria-hidden="true"><span>Kézisúlyzó</span><span>Kettlebell</span><span>Ellenállásos gumiszalag</span><span>Húzódzkodó rúd</span><span>Rúd és tárcsák</span><span>TRX</span><span>Ugrókötél</span><span>Medicinlabda</span><span>Pad</span><span>Tornagyűrű</span><span>Habhenger</span><span>Evezőgép</span><span>Csak a tested</span><span>Kézisúlyzó</span><span>Kettlebell</span><span>Ellenállásos gumiszalag</span><span>Húzódzkodó rúd</span><span>Rúd és tárcsák</span><span>TRX</span><span>Ugrókötél</span><span>Medicinlabda</span><span>Pad</span><span>Tornagyűrű</span><span>Habhenger</span><span>Evezőgép</span><span>Csak a tested</span></div>
+  </section>
+
+  <section class="stats" aria-label="A WFH számokban">
+    <div class="stat reveal"><b data-count="850" data-suffix="+">850+</b><span>gyakorlat, mindegyikhez leírt lépésekkel</span></div>
+    <div class="stat reveal" style="--d:.08s"><b data-count="27">27</b><span>felszerelés-típus, a gumiszalagtól az evezőgépig</span></div>
+    <div class="stat reveal" style="--d:.16s"><b data-count="7">7</b><span>nyelv, az angoltól a magyarig</span></div>
+    <div class="stat reveal" style="--d:.24s"><b data-count="0">0</b><span>követő, fiók vagy reklám</span></div>
+  </section>
+
+  <section class="try" id="try">
+    <div class="section-head reveal">
+      <p class="eyebrow">Próbáld ki</p>
+      <h2>Mondd el, mid van. <span class="highlight">Kapj egy edzést.</span></h2>
+      <p class="muted">Ízelítő abból, hogyan tervez a WFH edzést, az app valódi gyakorlatlistájával. Az app emellett kiegyensúlyozza a mozgásmintákat, kerüli, amit megjelölsz, és tanul abból, milyen érzés volt az edzés.</p>
+    </div>
+    <div class="demo reveal">
+      <div class="demo-controls">
+        <fieldset>
+          <legend>A felszerelésed</legend>
+          <div class="chips" id="demo-kit">
+            <button type="button" class="chip" aria-pressed="true" data-kit="dumbbells">Kézisúlyzó</button>
+            <button type="button" class="chip" aria-pressed="false" data-kit="kettlebell">Kettlebell</button>
+            <button type="button" class="chip" aria-pressed="false" data-kit="bands">Gumiszalag</button>
+            <button type="button" class="chip" aria-pressed="false" data-kit="pullUpBar">Húzódzkodó rúd</button>
+            <button type="button" class="chip" aria-pressed="false" data-kit="mat">Matrac</button>
+            <button type="button" class="chip" aria-pressed="false" data-kit="chair">Szék</button>
+            <button type="button" class="chip" aria-pressed="false" data-kit="bench">Pad</button>
+          </div>
+        </fieldset>
+        <label class="time-field"><span>Az időd <output id="demo-minutes-out">30 min</output></span>
+          <input id="demo-minutes" type="range" min="10" max="60" step="5" value="30"></label>
+        <div class="demo-buttons">
+          <button type="button" class="ghost-cta small" id="demo-shuffle">↻ Keverés</button>
+          <a class="ghost-cta small" id="demo-builder" href="../builder.html">Szerkesztés a készítőben →</a>
+        </div>
+      </div>
+      <div class="demo-result" id="demo-result" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="showcase" id="player">
+    <div class="showcase-copy reveal">
+      <p class="eyebrow">A lejátszó</p>
+      <h2>Olyan nagy, hogy a<br><span class="highlight">padlóról</span> is olvasod</h2>
+      <p class="muted">Számolt szettek, időzített intervallumok és pihenők, mindez kéz nélkül. A sípolás és a hangutasítások lehalkítják a zenédet ahelyett, hogy leállítanák, az időzítő pedig zárolt képernyővel is megy tovább.</p>
+      <div class="tabs" role="tablist" data-tabs="player-phone" aria-label="A lejátszó képernyői">
+        <button role="tab" aria-selected="true" data-img="../img/4-player.webp" data-alt="Szettek és ismétlések számolása egy érintéssel"><b>Szettek és ismétlések</b><span>Szett-, ismétlés- és súlyszámlálók vizes kézre és egy szabad hüvelykujjra tervezve.</span></button>
+        <button role="tab" aria-selected="false" data-img="../img/2-interval.webp" data-alt="HIIT, Tabata és EMOM intervallum-időzítő"><b>Intervallumok</b><span>HIIT, Tabata, EMOM és AMRAP nagy, jól látható visszaszámlálással.</span></button>
+        <button role="tab" aria-selected="false" data-img="../img/3-rest.webp" data-alt="Pihenő képernyő a következő gyakorlattal"><b>Pihenő, ami tudja, mi jön</b><span>Gleccserkék a regenerációhoz, a következő gyakorlattal mindig szem előtt.</span></button>
+      </div>
+    </div>
+    <div class="showcase-phone reveal" style="--d:.1s">
+      <div class="phone" id="player-phone"><div class="phone-screen"><img class="slide on" src="../img/4-player.webp" alt="Szettek és ismétlések számolása egy érintéssel" width="560" height="1217" loading="lazy"></div></div>
+    </div>
+  </section>
+
+  <section class="showcase flip" id="plan">
+    <div class="showcase-phone reveal">
+      <div class="phone"><div class="phone-screen"><img class="slide on" src="../img/5-preview.webp" alt="Edzés-előnézet bemelegítéssel, erő-, záró blokkal és levezetéssel" width="560" height="1217" loading="lazy"></div></div>
+    </div>
+    <div class="showcase-copy reveal" style="--d:.1s">
+      <p class="eyebrow">A terv</p>
+      <h2>Minden nap <span class="highlight">friss edzés.</span></h2>
+      <ul class="ticks">
+        <li>Add meg egyszer a felszerelésed: súlyzók súlya, gumiszalagok, rudak, hely és korlátozások</li>
+        <li>Válassz időt, célt és fókuszt, majd cserélj vagy dobj újra bármelyik gyakorlatot</li>
+        <li>Bemelegítés, erő, záró blokk és levezetés, kiegyensúlyozva és változatosan</li>
+        <li>Az eszközön futó MI változatos, de célra tartó edzéseket ad</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="showcase" id="progress">
+    <div class="showcase-copy reveal">
+      <p class="eyebrow">Fejlődés</p>
+      <h2>Lásd az egész <span class="highlight">évet.</span></h2>
+      <p class="muted">Sorozatok, rekordok és trendek a saját edzéseidből. Minden az eszközeiden marad.</p>
+      <div class="tabs" role="tablist" data-tabs="progress-phone" aria-label="A fejlődés képernyői">
+        <button role="tab" aria-selected="true" data-img="../img/6-year.webp" data-alt="Éves nézet havi edzésekkel és napi hőtérképpel"><b>Éves nézet</b><span>Az év minden edzése egy pillantásra, hónapról hónapra.</span></button>
+        <button role="tab" aria-selected="false" data-img="../img/7-trained.webp" data-alt="Mit edzettél: bontás"><b>Mit edzettél</b><span>Az erő, a kardió és a mobilitás egyensúlya, és hogy mi marad el.</span></button>
+        <button role="tab" aria-selected="false" data-img="../img/8-summary.webp" data-alt="Edzésösszegzés rekordokkal és érzéssel"><b>Minden edzés után</b><span>Rekordok, sorozatok és az érzés, ami a következő edzést hangolja.</span></button>
+      </div>
+    </div>
+    <div class="showcase-phone reveal" style="--d:.1s">
+      <div class="phone" id="progress-phone"><div class="phone-screen"><img class="slide on" src="../img/6-year.webp" alt="Éves nézet havi edzésekkel és napi hőtérképpel" width="560" height="1217" loading="lazy"></div></div>
+    </div>
+  </section>
+
+  <section class="share" id="share">
+    <div class="section-head reveal">
+      <p class="eyebrow">Megosztás</p>
+      <h2>Készítsd böngészőben. <span class="highlight">Küldd linkként.</span></h2>
+      <p class="muted">Az edzéskészítő teljes egészében a böngésződben fut. Válassz a teljes gyakorlatlistából, majd oszd meg a linket: megérintve egy „Megnyitás a WFH-ban” gomb jelenik meg, amely az appba teszi a tervet, felszerelés-cserével, ha valami hiányzik. (A készítő angol nyelvű.)</p>
+    </div>
+    <ol class="flow">
+      <li class="reveal"><span class="flow-n">1</span><b>Készítsd</b><span>Válassz gyakorlatokat, szetteket és időket.</span></li>
+      <li class="reveal" style="--d:.1s"><span class="flow-n">2</span><b>Oszd meg a linket</b><span>Üzenetek, AirDrop, Mail, bármi.</span></li>
+      <li class="reveal" style="--d:.2s"><span class="flow-n">3</span><b>Nyisd meg a WFH-ban</b><span>Egy érintés a másik iPhone-on.</span></li>
+    </ol>
+    <a class="builder-banner reveal" href="../builder.html">
+      <span class="banner-text"><strong>Az edzéskészítő megnyitása</strong><span>Ingyenes, privát, regisztráció nélkül. Semmi sem hagyja el a böngésződet. (Angolul.)</span></span>
+      <span class="banner-arrow" aria-hidden="true">→</span>
+    </a>
+  </section>
+
+  <section class="privacy" id="privacy">
+    <div class="section-head reveal">
+      <p class="eyebrow">Alapból privát</p>
+      <h2>Az edzésed <span class="highlight">a tiéd marad.</span></h2>
+    </div>
+    <div class="cards">
+      <article class="pcard reveal"><span class="pcard-icon" aria-hidden="true">◐</span><h3>Az iPhone-odon</h3><p>Az edzések az eszközön készülnek. Semmi sem megy felhőalapú MI-hez.</p></article>
+      <article class="pcard reveal" style="--d:.08s"><span class="pcard-icon" aria-hidden="true">✕</span><h3>Fiók és reklám nélkül</h3><p>Nincs regisztráció, követő SDK vagy analitika. Nem gyűjtünk adatot.</p></article>
+      <article class="pcard reveal" style="--d:.16s"><span class="pcard-icon" aria-hidden="true">☁</span><h3>A saját iCloudod</h3><p>Az eszközeid közti szinkron a privát iCloudodat használja. Mi nem látjuk.</p></article>
+      <article class="pcard reveal" style="--d:.24s"><span class="pcard-icon" aria-hidden="true">↗</span><h3>Úgy osztod meg, ahogy akarod</h3><p>A fájlok és linkek csak a tervet tartalmazzák: soha az előzményeket, értékeléseket vagy egészségügyi adatokat.</p></article>
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <div class="section-head reveal"><p class="eyebrow">Kérdések</p><h2>Jó tudni</h2></div>
+    <div class="faq-list reveal">
+      <details><summary>Kell internetkapcsolat?</summary><p>Nem. Az edzések teljes egészében az eszközödön készülnek és futnak.</p></details>
+      <details><summary>Hallom az utasításokat zenehallgatás közben?</summary><p>Igen. A sípolás és a hangutasítások rövid időre lehalkítják a zenédet vagy podcastodat, nem állítják le. A hang, a sípolás és a rezgés külön kikapcsolható.</p></details>
+      <details><summary>Megy tovább az időzítő zárolt képernyővel?</summary><p>Igen. A WFH a háttérben tovább méri az időt és játssza az utasításokat, amíg az edzés fut.</p></details>
+      <details><summary>Mi van, ha nincs meg egy megosztott edzés felszerelése?</summary><p>A WFH megjelöli azokat a gyakorlatokat, amelyeket a felszerelésedből nem tudsz megcsinálni, és indulás előtt cserélhetsz.</p></details>
+      <details><summary>Milyen nyelveken érhető el?</summary><p>English, Deutsch, Español, Français, Magyar, Polski és Português (Brasil), a teljes gyakorlattárral együtt.</p></details>
+    </div>
+  </section>
+
+  <section class="final reveal">
+    <h2>Készen állsz, ha <span class="highlight">te is.</span></h2>
+    <p class="muted">A felszerelésed. Az időd. Egy friss edzés egy érintésre.</p>
+    <div class="hero-actions center">
+      <a class="cta" href="https://apps.apple.com/app/id6819424317">Letöltés az App Store-ból</a>
+      <a class="ghost-cta" href="../builder.html">Edzés készítése <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
   <nav class="language-switcher" aria-label="Nyelv"><a href="../index.html" hreflang="en" lang="en">English</a><a href="../de/" hreflang="de" lang="de">Deutsch</a><a href="../es/" hreflang="es" lang="es">Español</a><a href="../fr/" hreflang="fr" lang="fr">Français</a><a href="../hu/" hreflang="hu" lang="hu" aria-current="true">Magyar</a><a href="../pl/" hreflang="pl" lang="pl">Polski</a><a href="../pt-br/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a></nav>
-  <footer><a href="index.html">Kezdőlap</a><a href="support.html">Támogatás</a><a href="privacy.html">Adatvédelem</a><a href="terms.html">Feltételek</a></footer>
+  <footer><a href="index.html">Kezdőlap</a><a href="../builder.html">Edzés készítése</a><a href="support.html">Támogatás</a><a href="privacy.html">Adatvédelem</a><a href="terms.html">Feltételek</a></footer>
 </main>
 </body>
 </html>

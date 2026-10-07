@@ -7,6 +7,9 @@
 <meta name="description" content="Ton matériel. Ton temps. Une nouvelle séance en un geste. WFH guide chaque série, intervalle et repos avec minuteurs et annonces vocales. Privé, hors ligne et sans pub.">
 <title>Entraînement à la Maison - WFH – Séances HIIT, Tabata, Minuteur</title>
 <link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../landing.css">
+<script>document.documentElement.classList.add("js")</script>
+<link rel="preload" as="image" href="../img/1-train.webp" type="image/webp">
 <link rel="alternate" hreflang="en" href="https://komaromia.github.io/wfh-site/">
 <link rel="alternate" hreflang="de" href="https://komaromia.github.io/wfh-site/de/">
 <link rel="alternate" hreflang="es" href="https://komaromia.github.io/wfh-site/es/">
@@ -15,24 +18,205 @@
 <link rel="alternate" hreflang="pl" href="https://komaromia.github.io/wfh-site/pl/">
 <link rel="alternate" hreflang="pt-BR" href="https://komaromia.github.io/wfh-site/pt-br/">
 <link rel="alternate" hreflang="x-default" href="https://komaromia.github.io/wfh-site/">
+<script>window.WFH_I18N = {"warmup": "Échauffement", "strength": "Force", "cooldown": "Retour au calme", "timed": "chrono", "setsRest": "3 séries · 60 s de repos", "reps": "{n} reps", "perSide": "{n} / côté", "seconds": "{n} s", "minutes": "{n} min", "quickTitle": "Séance rapide", "captions": ["La séance du jour, à un toucher", "Passez chaque bloc en revue avant de commencer", "Comptez séries et répétitions sans les mains", "De grands minuteurs d’intervalles bien lisibles"]};</script>
+<script src="../catalog.js" defer></script>
+<script src="../i18n/names.fr.js" defer></script>
+<script src="../workout-builder.js" defer></script>
+<script src="../landing.js" defer></script>
 </head>
-<body>
-<main>
-  <header><img src="../icon.png?v=57421328" alt=""><a href="index.html">WFH</a></header>
-  <h1>Entraînement à la Maison - WFH</h1>
-  <p class="lead">Séances HIIT, Tabata, Minuteur</p>
-  <p>Ton matériel. Ton temps. Une nouvelle séance en un geste. WFH guide chaque série, intervalle et repos avec minuteurs et annonces vocales. Privé, hors ligne et sans pub.</p>
-  <a class="cta" href="https://apps.apple.com/app/id6819424317">Télécharger dans l’App Store</a>
-  <div class="card"><strong>Confidentiel par conception.</strong> Les séances sont générées sur ton iPhone. Aucun compte, aucune publicité, aucun suivi. Tes données restent sur ton appareil.</div>
-  <ul>
-    <li>Indique ton matériel une seule fois : poids des haltères, bandes, barres, espace et limitations</li>
-    <li>Choisis la durée, l’objectif et la zone ciblée, puis génère, remplace ou relance n’importe quel exercice</li>
-    <li>Utilise le lecteur mains libres pour les séries, intervalles, EMOM, Tabata et AMRAP, avec annonces vocales et retours haptiques</li>
-    <li>Note tes séances, ajoute-les aux favoris, reproduis-les à l’identique ou demandes-en une similaire</li>
-    <li>Partage une séance sous forme de fichier .kworkout et ouvre-la sur l’iPhone d’un proche</li>
-  </ul>
+<body class="landing">
+<div class="scroll-bar" aria-hidden="true"></div>
+
+<header class="l-nav">
+  <a class="l-brand" href="index.html"><img src="../icon.png?v=57421328" alt="" width="36" height="36"><span>WFH</span></a>
+  <nav aria-label="Principal">
+    <a href="#try">Essayer</a>
+    <a href="#player">Lecteur</a>
+    <a href="#progress">Progression</a>
+    <a href="#share">Partager</a>
+    <a href="#privacy">Confidentialité</a>
+  </nav>
+  <a class="l-nav-cta" href="https://apps.apple.com/app/id6819424317">Obtenir l’app</a>
+</header>
+
+<main class="l-main">
+
+  <section class="hero" id="top">
+    <div class="hero-copy">
+      <p class="eyebrow reveal">L’entraînement à la maison</p>
+      <h1 class="reveal" style="--d:.05s">Le matériel que vous avez.<br>Le temps que vous avez.<br><span class="highlight">Partez.</span></h1>
+      <p class="lead reveal" style="--d:.12s">WFH crée une séance toute neuve avec votre matériel et les minutes dont vous disposez, puis vous guide avec de grands minuteurs, des compteurs de répétitions et des annonces vocales.</p>
+      <div class="hero-actions reveal" style="--d:.2s">
+        <a class="cta" href="https://apps.apple.com/app/id6819424317">Télécharger dans l’App Store</a>
+        <a class="ghost-cta" href="../builder.html">Créer une séance <span aria-hidden="true">→</span></a>
+      </div>
+      <ul class="hero-points reveal" style="--d:.28s">
+        <li>Sans compte</li><li>Sans publicité</li><li>Fonctionne hors ligne</li>
+      </ul>
+    </div>
+
+    <div class="hero-stage reveal" style="--d:.1s">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="phone tilt" data-carousel>
+        <div class="phone-screen">
+          <img class="slide on" src="../img/1-train.webp" alt="Écran d’accueil de WFH : la séance du jour, prête à démarrer" width="560" height="1217">
+          <img class="slide" src="../img/5-preview.webp" alt="Aperçu de la séance avec blocs et exercices" width="560" height="1217" loading="lazy">
+          <img class="slide" src="../img/4-player.webp" alt="Le lecteur compte les séries et les répétitions" width="560" height="1217" loading="lazy">
+          <img class="slide" src="../img/2-interval.webp" alt="Minuteur d’intervalles" width="560" height="1217" loading="lazy">
+        </div>
+      </div>
+      <div class="carousel-dots" role="tablist" aria-label="Écrans">
+        <button role="tab" aria-selected="true" aria-label="Séance du jour"></button>
+        <button role="tab" aria-selected="false" aria-label="Aperçu"></button>
+        <button role="tab" aria-selected="false" aria-label="Lecteur"></button>
+        <button role="tab" aria-selected="false" aria-label="Intervalles"></button>
+      </div>
+      <p class="carousel-caption" aria-live="polite">La séance du jour, à un toucher</p>
+    </div>
+  </section>
+
+  <section class="marquee" aria-label="Matériel pris en charge par WFH">
+    <div class="marquee-track" aria-hidden="true"><span>Haltères</span><span>Kettlebell</span><span>Bandes élastiques</span><span>Barre de traction</span><span>Barre et disques</span><span>TRX</span><span>Corde à sauter</span><span>Médecine-ball</span><span>Banc</span><span>Anneaux de gymnastique</span><span>Rouleau de massage</span><span>Rameur</span><span>Juste votre corps</span><span>Haltères</span><span>Kettlebell</span><span>Bandes élastiques</span><span>Barre de traction</span><span>Barre et disques</span><span>TRX</span><span>Corde à sauter</span><span>Médecine-ball</span><span>Banc</span><span>Anneaux de gymnastique</span><span>Rouleau de massage</span><span>Rameur</span><span>Juste votre corps</span></div>
+  </section>
+
+  <section class="stats" aria-label="WFH en chiffres">
+    <div class="stat reveal"><b data-count="850" data-suffix="+">850+</b><span>exercices, chacun avec des étapes rédigées</span></div>
+    <div class="stat reveal" style="--d:.08s"><b data-count="27">27</b><span>types de matériel, des bandes au rameur</span></div>
+    <div class="stat reveal" style="--d:.16s"><b data-count="7">7</b><span>langues, du français au magyar</span></div>
+    <div class="stat reveal" style="--d:.24s"><b data-count="0">0</b><span>traqueurs, comptes ou publicités</span></div>
+  </section>
+
+  <section class="try" id="try">
+    <div class="section-head reveal">
+      <p class="eyebrow">Essayer</p>
+      <h2>Dites votre matériel. <span class="highlight">Recevez une séance.</span></h2>
+      <p class="muted">Un aperçu de la façon dont WFH planifie une séance, avec la vraie liste d’exercices de l’app. L’app équilibre aussi les schémas de mouvement, évite ce que vous signalez et apprend de votre ressenti après chaque séance.</p>
+    </div>
+    <div class="demo reveal">
+      <div class="demo-controls">
+        <fieldset>
+          <legend>Votre matériel</legend>
+          <div class="chips" id="demo-kit">
+            <button type="button" class="chip" aria-pressed="true" data-kit="dumbbells">Haltères</button>
+            <button type="button" class="chip" aria-pressed="false" data-kit="kettlebell">Kettlebell</button>
+            <button type="button" class="chip" aria-pressed="false" data-kit="bands">Bandes</button>
+            <button type="button" class="chip" aria-pressed="false" data-kit="pullUpBar">Barre de traction</button>
+            <button type="button" class="chip" aria-pressed="false" data-kit="mat">Tapis</button>
+            <button type="button" class="chip" aria-pressed="false" data-kit="chair">Chaise</button>
+            <button type="button" class="chip" aria-pressed="false" data-kit="bench">Banc</button>
+          </div>
+        </fieldset>
+        <label class="time-field"><span>Votre temps <output id="demo-minutes-out">30 min</output></span>
+          <input id="demo-minutes" type="range" min="10" max="60" step="5" value="30"></label>
+        <div class="demo-buttons">
+          <button type="button" class="ghost-cta small" id="demo-shuffle">↻ Mélanger</button>
+          <a class="ghost-cta small" id="demo-builder" href="../builder.html">Modifier dans l’éditeur →</a>
+        </div>
+      </div>
+      <div class="demo-result" id="demo-result" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="showcase" id="player">
+    <div class="showcase-copy reveal">
+      <p class="eyebrow">Le lecteur</p>
+      <h2>Assez grand pour être lu<br>depuis le <span class="highlight">sol.</span></h2>
+      <p class="muted">Séries comptées, intervalles chronométrés et repos, le tout sans les mains. Les bips et les annonces vocales baissent le volume de votre musique au lieu de l’arrêter, et le minuteur continue écran verrouillé.</p>
+      <div class="tabs" role="tablist" data-tabs="player-phone" aria-label="Écrans du lecteur">
+        <button role="tab" aria-selected="true" data-img="../img/4-player.webp" data-alt="Compter séries et répétitions d’un toucher"><b>Séries et reps</b><span>Des compteurs de séries, de répétitions et de charge conçus pour des mains mouillées et un pouce libre.</span></button>
+        <button role="tab" aria-selected="false" data-img="../img/2-interval.webp" data-alt="Minuteur d’intervalles HIIT, Tabata et EMOM"><b>Intervalles</b><span>HIIT, Tabata, EMOM et AMRAP avec de grands comptes à rebours bien nets.</span></button>
+        <button role="tab" aria-selected="false" data-img="../img/3-rest.webp" data-alt="Écran de repos avec l’exercice suivant"><b>Un repos qui anticipe</b><span>Bleu glacier pour récupérer, avec la suite toujours sous les yeux.</span></button>
+      </div>
+    </div>
+    <div class="showcase-phone reveal" style="--d:.1s">
+      <div class="phone" id="player-phone"><div class="phone-screen"><img class="slide on" src="../img/4-player.webp" alt="Compter séries et répétitions d’un toucher" width="560" height="1217" loading="lazy"></div></div>
+    </div>
+  </section>
+
+  <section class="showcase flip" id="plan">
+    <div class="showcase-phone reveal">
+      <div class="phone"><div class="phone-screen"><img class="slide on" src="../img/5-preview.webp" alt="Aperçu d’une séance avec échauffement, force, finisher et retour au calme" width="560" height="1217" loading="lazy"></div></div>
+    </div>
+    <div class="showcase-copy reveal" style="--d:.1s">
+      <p class="eyebrow">Le plan</p>
+      <h2>Une séance neuve <span class="highlight">chaque jour.</span></h2>
+      <ul class="ticks">
+        <li>Indiquez votre matériel une fois : poids des haltères, bandes, barres, espace et limitations</li>
+        <li>Choisissez durée, objectif et focus, puis remplacez ou relancez n’importe quel exercice</li>
+        <li>Échauffement, force, finisher et retour au calme, équilibrés et variés</li>
+        <li>L’IA sur l’appareil garde chaque séance variée tout en restant dans le sujet</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="showcase" id="progress">
+    <div class="showcase-copy reveal">
+      <p class="eyebrow">Progression</p>
+      <h2>Toute l’<span class="highlight">année</span> d’un coup d’œil</h2>
+      <p class="muted">Séries, records et tendances tirés de vos propres séances. Tout reste sur vos appareils.</p>
+      <div class="tabs" role="tablist" data-tabs="progress-phone" aria-label="Écrans de progression">
+        <button role="tab" aria-selected="true" data-img="../img/6-year.webp" data-alt="Vue annuelle avec séances par mois et carte de chaleur quotidienne"><b>Vue annuelle</b><span>Toutes les séances de l’année d’un coup d’œil, mois par mois.</span></button>
+        <button role="tab" aria-selected="false" data-img="../img/7-trained.webp" data-alt="Répartition de ce que vous avez travaillé"><b>Ce que vous avez travaillé</b><span>L’équilibre entre force, cardio et mobilité, et ce qui vous manque.</span></button>
+        <button role="tab" aria-selected="false" data-img="../img/8-summary.webp" data-alt="Résumé de séance avec records et ressenti"><b>Après chaque séance</b><span>Records, séries et ressenti, qui règlent la séance suivante.</span></button>
+      </div>
+    </div>
+    <div class="showcase-phone reveal" style="--d:.1s">
+      <div class="phone" id="progress-phone"><div class="phone-screen"><img class="slide on" src="../img/6-year.webp" alt="Vue annuelle avec séances par mois et carte de chaleur quotidienne" width="560" height="1217" loading="lazy"></div></div>
+    </div>
+  </section>
+
+  <section class="share" id="share">
+    <div class="section-head reveal">
+      <p class="eyebrow">Partager</p>
+      <h2>Créez-la dans un navigateur. <span class="highlight">Envoyez-la en lien.</span></h2>
+      <p class="muted">L’éditeur de séances fonctionne entièrement dans votre navigateur. Choisissez dans la liste complète d’exercices, puis partagez un lien : en le touchant, on voit un bouton « Ouvrir dans WFH » qui ajoute le plan à l’app, avec des remplacements si le matériel manque. (L’éditeur est en anglais.)</p>
+    </div>
+    <ol class="flow">
+      <li class="reveal"><span class="flow-n">1</span><b>Créer</b><span>Choisissez exercices, séries et durées.</span></li>
+      <li class="reveal" style="--d:.1s"><span class="flow-n">2</span><b>Partager un lien</b><span>Messages, AirDrop, Mail, au choix.</span></li>
+      <li class="reveal" style="--d:.2s"><span class="flow-n">3</span><b>Ouvrir dans WFH</b><span>Un toucher sur l’autre iPhone.</span></li>
+    </ol>
+    <a class="builder-banner reveal" href="../builder.html">
+      <span class="banner-text"><strong>Ouvrir l’éditeur de séances</strong><span>Gratuit, privé et sans inscription. Rien ne quitte votre navigateur. (En anglais.)</span></span>
+      <span class="banner-arrow" aria-hidden="true">→</span>
+    </a>
+  </section>
+
+  <section class="privacy" id="privacy">
+    <div class="section-head reveal">
+      <p class="eyebrow">Privé par conception</p>
+      <h2>Votre entraînement <span class="highlight">reste à vous.</span></h2>
+    </div>
+    <div class="cards">
+      <article class="pcard reveal"><span class="pcard-icon" aria-hidden="true">◐</span><h3>Sur votre iPhone</h3><p>Les séances sont générées sur l’appareil. Rien n’est envoyé à une IA dans le cloud.</p></article>
+      <article class="pcard reveal" style="--d:.08s"><span class="pcard-icon" aria-hidden="true">✕</span><h3>Sans compte ni pub</h3><p>Pas d’inscription, pas de SDK de suivi, pas d’analyse. Aucune donnée collectée.</p></article>
+      <article class="pcard reveal" style="--d:.16s"><span class="pcard-icon" aria-hidden="true">☁</span><h3>Votre propre iCloud</h3><p>La synchronisation entre vos appareils passe par votre iCloud privé. Nous n’y avons pas accès.</p></article>
+      <article class="pcard reveal" style="--d:.24s"><span class="pcard-icon" aria-hidden="true">↗</span><h3>Partagez comme vous voulez</h3><p>Fichiers et liens ne contiennent que le plan : jamais historique, notes ni données de santé.</p></article>
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <div class="section-head reveal"><p class="eyebrow">Questions</p><h2>Bon à savoir</h2></div>
+    <div class="faq-list reveal">
+      <details><summary>Faut-il une connexion internet ?</summary><p>Non. Les séances sont générées et exécutées entièrement sur votre appareil.</p></details>
+      <details><summary>Entend-on les annonces pendant la musique ?</summary><p>Oui. Les bips et les annonces vocales baissent brièvement le volume de votre musique ou podcast au lieu de l’arrêter. La voix, les bips et le retour haptique se désactivent séparément.</p></details>
+      <details><summary>Le minuteur continue-t-il écran verrouillé ?</summary><p>Oui. WFH continue de chronométrer et de jouer les annonces en arrière-plan pendant une séance.</p></details>
+      <details><summary>Et si je n’ai pas le matériel d’une séance partagée ?</summary><p>WFH signale les exercices impossibles avec votre matériel et vous laisse les remplacer avant de commencer.</p></details>
+      <details><summary>Quelles langues sont disponibles ?</summary><p>English, Deutsch, Español, Français, Magyar, Polski et Português (Brasil), y compris toute la bibliothèque d’exercices.</p></details>
+    </div>
+  </section>
+
+  <section class="final reveal">
+    <h2>Prêt quand <span class="highlight">vous l’êtes.</span></h2>
+    <p class="muted">Votre matériel. Votre temps. Une séance neuve d’un toucher.</p>
+    <div class="hero-actions center">
+      <a class="cta" href="https://apps.apple.com/app/id6819424317">Télécharger dans l’App Store</a>
+      <a class="ghost-cta" href="../builder.html">Créer une séance <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
   <nav class="language-switcher" aria-label="Langue"><a href="../index.html" hreflang="en" lang="en">English</a><a href="../de/" hreflang="de" lang="de">Deutsch</a><a href="../es/" hreflang="es" lang="es">Español</a><a href="../fr/" hreflang="fr" lang="fr" aria-current="true">Français</a><a href="../hu/" hreflang="hu" lang="hu">Magyar</a><a href="../pl/" hreflang="pl" lang="pl">Polski</a><a href="../pt-br/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a></nav>
-  <footer><a href="index.html">Accueil</a><a href="support.html">Assistance</a><a href="privacy.html">Confidentialité</a><a href="terms.html">Conditions</a></footer>
+  <footer><a href="index.html">Accueil</a><a href="../builder.html">Créer une séance</a><a href="support.html">Assistance</a><a href="privacy.html">Confidentialité</a><a href="terms.html">Conditions</a></footer>
 </main>
 </body>
 </html>
